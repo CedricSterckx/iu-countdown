@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import uaenaLogo from './assets/uaena logo.png';
 import confetti from 'canvas-confetti';
+import { LogoSnowfall } from './LogoSnowfall';
 
 export const App = () => {
   const [timeLeft, setTimeLeft] = useState<string>('');
@@ -117,6 +118,8 @@ export const App = () => {
           </div>
         </div>
       )}
+
+      {showVideo && <LogoSnowfall />}
     </div>
   );
 };
