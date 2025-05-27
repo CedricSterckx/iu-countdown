@@ -79,7 +79,7 @@ export const App = () => {
       <div className='text-lg mb-2'>
         Current KST time: <span className='font-mono'>{currentKST}</span>
       </div>
-      <div className='text-2xl mb-6'>{timeLeft}</div>
+      <div className='text-2xl mb-6'>{timeLeft} left before hapiness</div>
 
       {showVideo && (
         <div className='mt-8 animate-fade-in'>
