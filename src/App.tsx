@@ -94,7 +94,6 @@ export const App = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Helper to fire confetti with logo
   const fireLogoConfetti = () => {
     confetti({
       particleCount: 120,
@@ -119,7 +118,7 @@ export const App = () => {
     let confettiInterval: number | null = null;
     if (showVideo) {
       fireLogoConfetti();
-      confettiInterval = setInterval(fireLogoConfetti, 1200); // fire every 1.2s
+      confettiInterval = setInterval(fireLogoConfetti, 1200);
     }
     return () => {
       if (confettiInterval) clearInterval(confettiInterval);
