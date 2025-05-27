@@ -125,7 +125,7 @@ export const App = () => {
                                                                                                     
     `);
   return (
-    <div className='cursor-[url(public/uaena-small.png),_pointer] flex flex-col items-center justify-center min-h-screen bg-[#d7c6fc] text-black text-center p-6'>
+    <div className='cursor-[url(uaena-small.png),_pointer] flex flex-col items-center justify-center min-h-screen bg-[#d7c6fc] text-black text-center p-6'>
       <h1 className='text-3xl font-bold mb-4'>Countdown for IU, A Flower Bookmark 3: 6PM KST - 27 May 2025</h1>
       <div className='text-lg mb-2'>
         Current KST time: <span className='font-mono'>{currentKST}</span>
