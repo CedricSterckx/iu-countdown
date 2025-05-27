@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 import uaenaLogo from './assets/uaena logo.png';
 import confetti from 'canvas-confetti';
 import { LogoSnowfall } from './LogoSnowfall';
-
+import { Analytics } from '@vercel/analytics/react';
 export const App = () => {
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [showVideo, setShowVideo] = useState(false);
@@ -176,6 +176,7 @@ export const App = () => {
       )}
 
       {showVideo && <LogoSnowfall />}
+      <Analytics />
     </div>
   );
 };

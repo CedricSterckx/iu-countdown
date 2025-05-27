@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
     "@types/luxon": "^3.6.2",
+    "@vercel/analytics": "^1.5.0",
     "canvas-confetti": "^1.9.3",
     "luxon": "^3.6.1",
     "react": "^19.1.0",
