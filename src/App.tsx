@@ -6,7 +6,6 @@ import confetti from 'canvas-confetti';
 export const App = () => {
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [showVideo, setShowVideo] = useState(false);
-  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   const targetTimeKST = DateTime.fromISO('2025-05-27T18:00:00', {
     zone: 'Asia/Seoul',
@@ -31,17 +30,7 @@ export const App = () => {
     const intervalId = setInterval(updateCountdown, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
-
-  useEffect(() => {
-    // Track window size for confetti
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [targetTimeKST]);
 
   // Helper to fire confetti with logo
   const fireLogoConfetti = () => {
@@ -60,7 +49,7 @@ export const App = () => {
       gravity: 0.8,
       ticks: 200,
       zIndex: 9999,
-    } as any);
+    } as never);
   };
 
   // Fire confetti infinitely when showVideo becomes true
@@ -68,7 +57,7 @@ export const App = () => {
     let confettiInterval: number | null = null;
     if (showVideo) {
       fireLogoConfetti();
-      confettiInterval = setInterval(fireLogoConfetti, 500); // fire every 500ms
+      confettiInterval = setInterval(fireLogoConfetti, 1200); // fire every 1.2s
     }
     return () => {
       if (confettiInterval) clearInterval(confettiInterval);
