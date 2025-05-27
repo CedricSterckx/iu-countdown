@@ -9,7 +9,7 @@ export const App = () => {
   const [showVideo, setShowVideo] = useState(false);
   const [currentKST, setCurrentKST] = useState(DateTime.now().setZone('Asia/Seoul').toFormat('yyyy-MM-dd HH:mm:ss'));
 
-  const targetTimeKST = DateTime.fromISO('2025-05-27T18:00:00', {
+  const targetTimeKST = DateTime.fromISO('2025-05-27T17:59:58', {
     zone: 'Asia/Seoul',
   });
 
