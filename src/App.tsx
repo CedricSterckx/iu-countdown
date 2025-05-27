@@ -75,7 +75,6 @@ export const App = () => {
       if (diff.toMillis() <= 0) {
         setShowVideo(true);
         setTimeLeft("🎉 It's time! 🎉");
-        clearInterval(intervalId);
       } else {
         const { hours, minutes, seconds } = diff.toObject();
         setTimeLeft(` ${hours ?? 0}h ${minutes ?? 0}m ${Math.floor(seconds ?? 0)}s`);
@@ -133,7 +132,10 @@ export const App = () => {
       <div className='text-lg mb-2'>
         Current KST time: <span className='font-mono'>{currentKST}</span>
       </div>
-      <div className='text-2xl mb-6'>{timeLeft} left before hapiness</div>
+      <div className='text-2xl mb-6'>
+        {timeLeft}
+        {!showVideo && <span> left before hapiness</span>}
+      </div>
 
       {showVideo && (
         <div className='mt-8 animate-fade-in'>
