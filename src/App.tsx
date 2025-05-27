@@ -7,6 +7,7 @@ import { LogoSnowfall } from './LogoSnowfall';
 export const App = () => {
   const [timeLeft, setTimeLeft] = useState<string>('');
   const [showVideo, setShowVideo] = useState(false);
+  const [currentKST, setCurrentKST] = useState(DateTime.now().setZone('Asia/Seoul').toFormat('yyyy-MM-dd HH:mm:ss'));
 
   const targetTimeKST = DateTime.fromISO('2025-05-27T18:00:00', {
     zone: 'Asia/Seoul',
@@ -22,8 +23,8 @@ export const App = () => {
         setTimeLeft("🎉 It's time! 🎉");
         clearInterval(intervalId);
       } else {
-        const { days, hours, minutes, seconds } = diff.toObject();
-        setTimeLeft(`${days ?? 0}d ${hours ?? 0}h ${minutes ?? 0}m ${Math.floor(seconds ?? 0)}s`);
+        const { hours, minutes, seconds } = diff.toObject();
+        setTimeLeft(` ${hours ?? 0}h ${minutes ?? 0}m ${Math.floor(seconds ?? 0)}s`);
       }
     };
 
@@ -32,6 +33,13 @@ export const App = () => {
 
     return () => clearInterval(intervalId);
   }, [targetTimeKST]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentKST(DateTime.now().setZone('Asia/Seoul').toFormat('yyyy-MM-dd HH:mm:ss'));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Helper to fire confetti with logo
   const fireLogoConfetti = () => {
@@ -68,16 +76,10 @@ export const App = () => {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen bg-[#d7c6fc] text-black text-center p-6'>
       <h1 className='text-3xl font-bold mb-4'>Countdown for IU Flower Bookmark 3: 6PM KST - 27 May 2025</h1>
+      <div className='text-lg mb-2'>
+        Current KST time: <span className='font-mono'>{currentKST}</span>
+      </div>
       <div className='text-2xl mb-6'>{timeLeft}</div>
-      <button
-        onClick={() => {
-          setShowVideo(!showVideo);
-          if (!showVideo) fireLogoConfetti();
-        }}
-        className='bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors'
-      >
-        {showVideo ? 'Hide Streaming Links' : 'Show Streaming Links'}
-      </button>
 
       {showVideo && (
         <div className='mt-8 animate-fade-in'>
